@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+
+    {% load static %}
+
+    {% block intermedio %}
+        <img src="{% static 'img/Intermedio/intermedio_agregar.gif' %}" alt="Carrousel" class="principal_intermedio">
+    {% endblock %}
+
+    {% block cuerpo %}
+
+        <section class="info_mayola">
+          {% for i in forms %}
+            <div class="img">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    {% if i.Imagenes %}
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="{{i.Imagenes.first.Imagen.url}}" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{{i.Imagen.url}}" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{{i.Imagenes.last.Imagen.url}}" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    {% endif %}
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                  
+            </div>
+
+            <div class="info">
+              <h4 class="titulo">Nombre: {{i.Nombre}}</h4>
+              <h5>Casa: {{i.Casa}}</h5>
+              <p>Hechizo: {{i.Hechizo}}</p>
+            </div>
+          {% endfor %}
+        </section>
+
+    {% endblock %}
