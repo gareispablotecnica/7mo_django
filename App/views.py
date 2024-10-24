@@ -8,6 +8,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Q
 
+#--->Libreria para mensajes
+from django.contrib import messages
 
 # Create your views here.
 def Home(request):
@@ -35,11 +37,6 @@ def ver_Personajes(request):
     }
     return render(request,'Pages/visualizar.html',data)
 
-
-
-
-
-
 def ver_mas(request,Codigo):
     buscar=Personajes.objects.filter(Codigo=Codigo)
     data={
@@ -47,12 +44,8 @@ def ver_mas(request,Codigo):
     }
     return render(request,'Pages/ver_mas.html',data)
 
-
-
-
-
-
-
+#--->Libreria para mensajes
+from django.contrib import messages
 @login_required
 
 @permission_required('App.add_personajes')
@@ -64,7 +57,7 @@ def Agregar(request):
         query=NuevoPersonaje(data=request.POST,files=request.FILES)
         if  query.is_valid():
             query.save()
-            data['mensaje']="Datos Registrados"
+            messages.success(request,"Datos Registrados")
         else:
             data['forms']=NuevoPersonaje
     return render (request,'Pages/agregar.html',data)
@@ -80,7 +73,7 @@ def Modificar_Personajes(request,Codigo):
         query=NuevoPersonaje(data=request.POST,instance=sql,files=request.FILES)
         if  query.is_valid():
             query.save()
-            data['mensaje']="Datos Modificados Correctamente "
+            messages.success(request,"Registrado Correctamente")
         else:
             data['forms']=NuevoPersonaje
     return render (request,'Pages/modificar.html',data)

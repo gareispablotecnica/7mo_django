@@ -17,4 +17,7 @@ class NuevoPersonaje(forms.ModelForm):
     
     class Meta:
         model=Personajes
-        fields='__all__'
+        fields ='__all__'
+        
+
+    

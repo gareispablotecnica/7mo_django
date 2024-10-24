@@ -133,3 +133,6 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'Media')
 #--->Url(URL Login)
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
+
+#--> Message
+MESSAGE_STORAGE="django.contrib.messages.storage.cookie.CookieStorage"
