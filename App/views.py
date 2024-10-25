@@ -7,9 +7,9 @@ from django.contrib.auth import logout
 #--->Importamos la Libreria de Permisos
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Q
-
 #--->Libreria para mensajes
 from django.contrib import messages
+
 
 # Create your views here.
 def Home(request):
@@ -19,7 +19,6 @@ def Home(request):
     }
     return render (request,'index.html',data)
 
-from django.db.models import Q
 
 def ver_Personajes(request):
     #--->TREAMOS TODOS LOS ELEMENTOS DEL TABLA
@@ -37,12 +36,14 @@ def ver_Personajes(request):
     }
     return render(request,'Pages/visualizar.html',data)
 
+
 def ver_mas(request,Codigo):
     buscar=Personajes.objects.filter(Codigo=Codigo)
     data={
         'forms':buscar
     }
     return render(request,'Pages/ver_mas.html',data)
+
 
 #--->Libreria para mensajes
 from django.contrib import messages
